@@ -1,9 +1,15 @@
+
 plugins {
     id 'java'
+    id 'application'
 }
 
-group 'com.moringa.heroika'
+group 'com.moringa.my-blog'
 version '1.0-SNAPSHOT'
+
+mainClassName = 'App'
+
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -11,4 +17,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile "com.sparkjava:spark-core:2.9.1"
+    compile "com.sparkjava:spark-template-handlebars:2.5.5"
+    compile 'org.slf4j:slf4j-simple:1.7.21'
 }
