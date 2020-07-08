@@ -36,6 +36,8 @@ public class App {
             String squadCause = request.queryParams("squadCause");
 
             String members = request.queryParams("members");
+
+
             model.put("squadName", squadName);
             model.put("squadCause", squadCause);
             model.put("members", members);

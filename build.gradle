@@ -4,7 +4,7 @@ plugins {
     id 'application'
 }
 
-group 'com.moringa.my-blog'
+group 'com.moringa.Heroika'
 version '1.0-SNAPSHOT'
 
 mainClassName = 'App'
