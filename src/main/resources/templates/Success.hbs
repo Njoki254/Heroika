@@ -1,13 +1,22 @@
 {{#partial "content"}}
-
+<div class="success">
     <h1>Success!</h1>
 
-    Your {{squadName}} Squad  has been created and saved.
+    Your {{ squadName }} Squad  has been created and saved.
 
-    You will be pursuing {{squadCause}} the squad cause
+    Your mission is to {{squadCause}} as a team.
+    <String[] items = request.getParameterValues("members");
+    for(int i = 0; i < items.length; i++){
+    out.println("Your team members are" + items[i] + "," "<BR>");
+    }
+    %>
+    Your team members are
 
 
-    <a href="/">Go Back</a>
+
+</div>
+
+    <!--<a href="/">Go Back</a>-->
 {{/partial}}
 
 {{> layout.hbs}}

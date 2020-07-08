@@ -1,0 +1,130 @@
+{{#partial "content"}}
+
+
+
+
+    <div class="container">
+        <h2 class="text-center"><strong>Create a Squad</strong></h2>
+
+        <form action="/success">
+            <div class="form-group">
+                <label class="active " for="squadName">Squad Name</label>
+                <input id="squadName" name="squadName" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label class="active" for="maxSize">Squad Size</label>
+                <input id="maxSize" name="maxSize" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label class="active" for="squadCause">Squad Cause</label>
+                <input id="squadCause" name="squadCause" type="text" class="form-control">
+            </div>
+            <div class="container" id="listOfHeroes">
+                <h3>Select Members Of Your Squad. You can have a maximum of 5 on your Squad</h3>
+
+                <label for="member1">Select your Team Lead:</label>
+                <select name="member1" id="cars" form="carform">
+                    <option value="Okoye">Okoye</option>
+                    <option value="Nakia">Nakia</option>
+                    <option value="Killmonger">Killmonger</option>
+                    <option value="Storm">Storm</option>
+                    <option value="T'Challa">T'Challa</option>
+                    <option value="Nairobi">Nairobi</option>
+                    <option value="Minion">Minion</option>
+                    <option value="Dread">Dread</option>
+                    <option value="The Couple">The Couple</option>
+                    <option value="Shuri">Shuri</option>
+                    <option value="Mbaku">Killmonger</option>
+                </select>
+
+                <label for="member2">Select Member 2:</label>
+                <select name="member2" id="cars" form="carform">
+                    <option value="Okoye">Okoye</option>
+                    <option value="Nakia">Nakia</option>
+                    <option value="Killmonger">Killmonger</option>
+                    <option value="Storm">Storm</option>
+                    <option value="T'Challa">T'Challa</option>
+                    <option value="Nairobi">Nairobi</option>
+                    <option value="Minion">Minion</option>
+                    <option value="Dread">Dread</option>
+                    <option value="The Couple">The Couple</option>
+                    <option value="Shuri">Shuri</option>
+                    <option value="Mbaku">Killmonger</option>
+                </select>
+                <label for="member3">Select Member 3 :</label>
+                <select name="member3" id="cars" form="carform">
+                    <option value="Okoye">Okoye</option>
+                    <option value="Nakia">Nakia</option>
+                    <option value="Killmonger">Killmonger</option>
+                    <option value="Storm">Storm</option>
+                    <option value="T'Challa">T'Challa</option>
+                    <option value="Nairobi">Nairobi</option>
+                    <option value="Minion">Minion</option>
+                    <option value="Dread">Dread</option>
+                    <option value="The Couple">The Couple</option>
+                    <option value="Shuri">Shuri</option>
+                    <option value="Mbaku">Killmonger</option>
+                </select>
+                <label for="member4">Select Member 4:</label>
+                <select name="member4" id="cars" form="carform">
+                    <option value="Okoye">Okoye</option>
+                    <option value="Nakia">Nakia</option>
+                    <option value="Killmonger">Killmonger</option>
+                    <option value="Storm">Storm</option>
+                    <option value="T'Challa">T'Challa</option>
+                    <option value="Nairobi">Nairobi</option>
+                    <option value="Minion">Minion</option>
+                    <option value="Dread">Dread</option>
+                    <option value="The Couple">The Couple</option>
+                    <option value="Shuri">Shuri</option>
+                    <option value="Mbaku">Killmonger</option>
+                </select>
+                <label for="member5">Select Member 5:</label>
+                <select name="member5" id="cars" form="carform">
+                    <option value="Okoye">Okoye</option>
+                    <option value="Nakia">Nakia</option>
+                    <option value="Killmonger">Killmonger</option>
+                    <option value="Storm">Storm</option>
+                    <option value="T'Challa">T'Challa</option>
+                    <option value="Nairobi">Nairobi</option>
+                    <option value="Minion">Minion</option>
+                    <option value="Dread">Dread</option>
+                    <option value="The Couple">The Couple</option>
+                    <option value="Shuri">Shuri</option>
+                    <option value="Mbaku">Killmonger</option>
+                </select>
+                <label for="member2">Select Member 6:</label>
+                <select name="member2" id="cars" form="carform">
+                    <option value="Okoye">Okoye</option>
+                    <option value="Nakia">Nakia</option>
+                    <option value="Killmonger">Killmonger</option>
+                    <option value="Storm">Storm</option>
+                    <option value="T'Challa">T'Challa</option>
+                    <option value="Nairobi">Nairobi</option>
+                    <option value="Minion">Minion</option>
+                    <option value="Dread">Dread</option>
+                    <option value="The Couple">The Couple</option>
+                    <option value="Shuri">Shuri</option>
+                    <option value="Mbaku">Killmonger</option>
+                </select>
+
+
+
+
+
+
+            <button type="submit" class=" btn btn-success" >Create Squad!</button>
+        </form>
+    </div>
+    <!--
+            <h4>Edit this Post!</h4>
+            <form action="/posts/{{editPost.id}}/update" method="post">
+                <label for="content">Edit this post's content</label>
+                <input id="content" name="content" type="text" value="{{editPost.content}}">-->
+
+
+{{/partial}}
+
+{{> layout.hbs}}
