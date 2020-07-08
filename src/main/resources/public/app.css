@@ -57,6 +57,7 @@ text-size: 70px;
 
 #ListOfHeroes{
     float: left;
+    color:black;
 }
 #navbar{
     color:white;
@@ -67,4 +68,7 @@ text-align: center;
 }
 .success{
 font-size: 30px;
+}
+#members{
+color:black;
 }
