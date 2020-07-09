@@ -1,0 +1,19 @@
+
+{{#partial "content"}}
+
+
+
+
+        <!--should have single quotes-->
+    {{#each squadInstance}}
+        {{squadName}},
+        {{squadCause}}
+        <a href="/squad-store/{{id}}">Delete Squad</a>
+    {{/each}}
+
+
+
+
+{{/partial}}
+
+{{> layout.hbs}}

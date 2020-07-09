@@ -2,45 +2,50 @@ import java.util.ArrayList;
 
 public class Squad {
 
-    private String content;
+    private String squadCause;
+    private String squadName;
+    private int maxSize;
     private static ArrayList<Squad> instances = new ArrayList<>();
-    private boolean published; //i’m new
-    private int id;
 
-    public Squad (String content){
-        this.content = content;
-        this.published = false; //also new
+    private static int id;
+
+    public Squad (String squadName, String squadCause){
+
+        this.squadName = squadName;
+        this.squadCause= squadCause;
+        this.maxSize= 5;
         instances.add(this);
-        this.id=instances.size();
+        this.id=instances.size(); //size of array list if 1 item then id = 1,
     }
 
-    public String getContent() {
-        return content;
+    public String getSquadCause() {
+        return squadCause;
     }
 
-    public static ArrayList<Squad> getAll(){
-        return instances;
+    public String getSquadName() {
+        return squadName;
     }
 
-    public static void clearAllSquads(){
-        instances.clear(); //clear as a method is part of the ArrayList class.
+    public int getMaxSize() {
+        return maxSize;
     }
 
-    public boolean getPublished(){ //new too
-        return this.published;
+    public static ArrayList<Squad> getInstances() {
+        return instances;//arraylist represents data type to be returned,
     }
+
     public int getId() {
         return id;
     }
-    public static Squad findById(int id){
-        return instances.get(id-1); //why minus 1? See if you can figure it out.
+    public static Squad findSquadById(int id){
+        return instances.get(id-1); //because indexing starts at zero
     }
-    public void deleteSquad(){
-        instances.remove(id-1); //same reason
+    public static void deleteSquad(int id){
+        instances.remove(id-1);
+
     }
-
-
-    public void update(String content) {
-        this.content = content;
+    public void update(String squadCause, String squadName) {
+        this.squadCause = squadCause;
+        this.squadName = squadName;
     }
 }
