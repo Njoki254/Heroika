@@ -1,39 +1,54 @@
-
 import java.util.ArrayList;
 
 public class Hero {
-    private String content;
+
+    private String heroName;
+    private String heroStrength;
+    private String heroWeakness;
+
     private static ArrayList<Hero> instances = new ArrayList<>();
-    private boolean published; //i’m new
-    private int id;
 
-    public Hero (String content){
-        this.content = content;
-        this.published = false; //also new
+    private static int id;
+
+    public Hero (String heroName, String heroStrength, String heroWeakness){
+
+        this.heroName = heroName;
+        this.heroStrength= heroStrength;
+        this.heroWeakness= heroWeakness;
+
         instances.add(this);
-        this.id = instances.size();
+        this.id=instances.size(); //size of array list if 1 item then id = 1,
     }
 
-    public String getContent() {
-        return content;
+
+    public String getHeroName() {
+        return heroName;
     }
 
-    public static ArrayList<Hero> getAll(){
-        return instances;
+    public String getHeroStrength() {
+        return heroStrength;
     }
 
-    public static void clearAllSquads(){
-        instances.clear(); //clear as a method is part of the ArrayList class.
+    public String getHeroWeakness(){ return heroWeakness;}
+
+    public static ArrayList<Hero> getInstances() {
+        return instances;//arraylist represents data type to be returned,
     }
 
-    public boolean getPublished(){ //new too
-        return this.published;
-    }
+
     public int getId() {
         return id;
     }
-    public static Hero findById(int id){
-        return instances.get(id-1); //why minus 1? See if you can figure it out.
+    public static Hero findHeroById(int id){
+        return instances.get(id-1); //because indexing starts at zero
+    }
+    public static void deleteHero(int id){
+        instances.remove(id-1);
+
+    }
+    public void updateHero(String heroName, String heroStrength, String heroWeakness) {
+        this.heroName = heroName;
+        this.heroStrength = heroStrength;
+        this.heroWeakness = heroWeakness;
     }
 }
-
