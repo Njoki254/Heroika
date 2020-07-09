@@ -10,6 +10,12 @@ font-weight: 1000;
 
 
 }
+#ListOfSquadsCreated{
+text-align: center;
+}
+#displaySquad{
+font-size: 25px;
+}
 
 .card-img-top{
 

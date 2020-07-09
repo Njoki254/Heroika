@@ -1,15 +1,22 @@
 
 {{#partial "content"}}
 
+    <div class="container" id="displaySquad">
+        <h1 id="ListOfSquadsCreated"> List of Squads Created</h1>
+        {{#each squadInstance}}
+            Name: {{squadName}},<br>
+            Cause: {{squadCause}}
+            <br>
+            <a href="/squad-store/{{id}}" width="5px" height="5px">Delete Squad</a>
+            <br>
+            <br>
+            <br>
+        {{/each}}
 
+    </div>
 
 
         <!--should have single quotes-->
-    {{#each squadInstance}}
-        {{squadName}},
-        {{squadCause}}
-        <a href="/squad-store/{{id}}">Delete Squad</a>
-    {{/each}}
 
 
 

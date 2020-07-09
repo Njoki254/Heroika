@@ -18,6 +18,7 @@ public class Squad {
         this.id=instances.size(); //size of array list if 1 item then id = 1,
     }
 
+
     public String getSquadCause() {
         return squadCause;
     }
@@ -33,6 +34,7 @@ public class Squad {
     public static ArrayList<Squad> getInstances() {
         return instances;//arraylist represents data type to be returned,
     }
+
 
     public int getId() {
         return id;

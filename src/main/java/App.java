@@ -43,12 +43,15 @@ public class App {
             response.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
+
+        //To get all posts in one place
         get("/squad-store", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             List<Squad> squadInstance = Squad.getInstances();//code that is collecting all the instances of squad available
             model.put("squadInstance", squadInstance);
             return new ModelAndView(model, "squad-store.hbs");
         }, new HandlebarsTemplateEngine());
+
 
         //Code to retrieve user's input
         post("/squads/new", (request, response) -> {
@@ -62,6 +65,23 @@ public class App {
             model.put( "newSquad",newSquad);//stores the newSquad
 
            // model.put("members", members);
+            return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/squads/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfSquadToFind = Integer.parseInt(req.params(":id")); //pull id - must match route segment
+            Squad foundSquad = Squad.findSquadById(idOfSquadToFind); //use it to find post
+            model.put("squad", foundSquad); //add it to model for template to display
+            return new ModelAndView(model, "squad-store.hbs"); //individual post page.
+        }, new HandlebarsTemplateEngine());
+        //post: process a form to update a squad
+        post("/posts/:id/update", (req, res) -> { //URL to make new post on POST route
+            Map<String, Object> model = new HashMap<>();
+            String newName= req.queryParams("name");
+            String newCause= req.queryParams("cause");
+            int idOfSquadToEdit = Integer.parseInt(req.params("id"));
+            Squad editSquad = Squad.findSquadById(idOfSquadToEdit);
+            editSquad.update(newName,newCause);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
 
