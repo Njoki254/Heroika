@@ -5,10 +5,16 @@ background-image: url('/images/stars.jpg');
 background-repeat: no-repeat;
 background-size:cover;
 background-position: center-center;
-opacity: 0.7;
+
 font-weight: 1000;
 
 
+}
+#ListOfSquadsCreated{
+text-align: center;
+}
+#displaySquad{
+font-size: 25px;
 }
 
 .card-img-top{
@@ -41,7 +47,7 @@ color: white;
     background-size:cover;
     background-position: center-center;
     width: 100%;
-    height: auto;
+    height: 100%;
     color: white;
     font-size: 50px;
     text-align: center;
@@ -71,4 +77,12 @@ font-size: 30px;
 }
 #members{
 color:black;
+}
+.navbar-brand{
+
+  position:relative;
+  top:-10px;
+  left:0px;
+  background-color: black;
+
 }
