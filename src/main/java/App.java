@@ -30,7 +30,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //Code to retrieve user's input
-        get("/success", (request, response) -> {
+        get("/squads/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String squadName = request.queryParams("squadName");
             String squadCause = request.queryParams("squadCause");
@@ -43,8 +43,12 @@ public class App {
             model.put("members", members);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
+        get("/squads/new",(req,res)->{
+            Map<String,Object> model = new HashMap<>();
+            return new ModelAndView(model,"Squad-Form.hbs");
+        }, new HandlebarsTemplateEngine());
         //post: process new post form
-        post("/success", (req, res) -> { //URL to make new post on POST route
+       /* post("/success", (req, res) -> { //URL to make new post on POST route
             Map<String, Object> model = new HashMap<>();
 
 
@@ -52,6 +56,17 @@ public class App {
             Squad newSquad= new Squad(content);
             model.put("squad", newSquad);
             return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());*/
+        //code to alter stored info
+
+        //post: process new post form
+        //code for grabbing all posts
+        get("/", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            ArrayList<Squad> squads= Squad.getAll();
+            model.put("squads", squads);
+
+            return new ModelAndView(model, "homepage.hbs");
         }, new HandlebarsTemplateEngine());
     }
 
