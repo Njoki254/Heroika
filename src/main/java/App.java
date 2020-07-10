@@ -7,13 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Integer.parseInt;
 import static spark.Spark.*;
 
 public class App {
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
+            return parseInt(processBuilder.environment().get("PORT"));
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
@@ -48,7 +49,7 @@ public class App {
         get("/squad-store/:id", (request, response) -> {//colon is collecting id.
             Map<String, Object> model = new HashMap<String, Object>();
             //code that is collecting all the instances of squad available
-            int deleteSquadId = Integer.parseInt(request.queryParams("id"));
+            int deleteSquadId = parseInt(request.queryParams("id"));
             Squad.deleteSquad(deleteSquadId); //how to call a method from class
             response.redirect("/");
             return null;
@@ -68,19 +69,20 @@ public class App {
             Map<String, Object> model = new HashMap<String, Object>();
             String squadName = request.queryParams("squadName");
             String squadCause = request.queryParams("squadCause");
-            int squadSize = Integer.parseInt(request.params("squadSize"));
-            Squad newSquad = new Squad(squadName, squadCause, squadSize);//constructor
+            String members= request.queryParams("members");
+
+            Squad newSquad = new Squad(squadName, squadCause, members);//constructor
             //String members = request.queryParams("members");
 
 
             model.put( "newSquad",newSquad);//stores the newSquad
 
-           // model.put("members", members);
+            // model.put("members", members);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
         get("/squads/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfSquadToFind = Integer.parseInt(req.params(":id")); //pull id - must match route segment
+            int idOfSquadToFind = parseInt(req.params(":id")); //pull id - must match route segment
             Squad foundSquad = Squad.findSquadById(idOfSquadToFind); //use it to find post
             model.put("squad", foundSquad); //add it to model for template to display
             return new ModelAndView(model, "squad-store.hbs"); //individual post page.
@@ -90,7 +92,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String newName= req.queryParams("name");
             String newCause= req.queryParams("cause");
-            int idOfSquadToEdit = Integer.parseInt(req.params("id"));
+            int idOfSquadToEdit = parseInt(req.params("id"));
             Squad editSquad = Squad.findSquadById(idOfSquadToEdit);
             editSquad.update(newName,newCause);
             return new ModelAndView(model, "Success.hbs");

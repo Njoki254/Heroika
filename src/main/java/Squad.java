@@ -6,15 +6,18 @@ public class Squad {
     private String squadName;
 
     private int squadSize;
+    private String members;
     private static ArrayList<Squad> instances = new ArrayList<>();
+
 
     private static int id;
 
-    public Squad (String squadName, String squadCause,int squadSize){
+    public Squad (String squadName, String squadCause, String members){
 
         this.squadName = squadName;
         this.squadCause= squadCause;
-        this.squadSize= squadSize;
+        this.members= members;
+        this.squadSize= 5;
 
         instances.add(this);
         this.id=instances.size(); //size of array list if 1 item then id = 1,
