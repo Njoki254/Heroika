@@ -68,7 +68,8 @@ public class App {
             Map<String, Object> model = new HashMap<String, Object>();
             String squadName = request.queryParams("squadName");
             String squadCause = request.queryParams("squadCause");
-            Squad newSquad = new Squad(squadName, squadCause);//constructor
+            int squadSize = Integer.parseInt(request.params("squadSize"));
+            Squad newSquad = new Squad(squadName, squadCause, squadSize);//constructor
             //String members = request.queryParams("members");
 
 
@@ -94,9 +95,20 @@ public class App {
             editSquad.update(newName,newCause);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
+        /*//To display all objects created
+        get("/", (req, res) -> {
+            //just for testing - make two new objects so we have something to retrieve
+            Rectangle rectangle = new Rectangle(3,2);
+            Rectangle otherRectangle = new Rectangle(12, 12);
+
+            Map<String, ArrayList<Rectangle>> model = new HashMap<>();
+            ArrayList myRectangleArrayList = Rectangle.getAll();
+            model.put("myRectangles", myRectangleArrayList);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //post: process new post form
-       /* post("/success", (req, res) -> { //URL to make new post on POST route
+        post("/success", (req, res) -> { //URL to make new post on POST route
             Map<String, Object> model = new HashMap<>();
 
 

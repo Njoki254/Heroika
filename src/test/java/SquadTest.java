@@ -9,24 +9,44 @@ public class SquadTest {
 
     @Test
     public void SquadInstantiate() {
-        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa");
+        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", 3);
         assertEquals(true, mySquad instanceof Squad);
     }
     @Test
     public void getSquadName_String() {
-        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa");
+        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", 4);
         String expected = "Wakanda";
         assertEquals(expected, mySquad.getSquadName());
     }
 
     @Test
     public void getSquadCause() {
-        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa");
+        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", 2);
         String expected = "fight off exploitation of Africa";
         assertEquals(expected, mySquad.getSquadCause());
     }
+    @Test
+    public void testGetSquadSize(){
+        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", 2);
+        int expected= 2;
+        assertEquals(expected, mySquad.getSquadSize());
 
+    }
+    @Test
+    public void testGetId(){
+        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", 2);
+        Squad.clear();
+        assertEquals(5, mySquad.getId());
+    }
 
+    @Test
+    public void testGetAllInstances(){
+        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", 2);
+        Squad squad2 = new Squad("Avengers", "fight off corona virus",5);
+        assertTrue(Squad.getInstances().contains(mySquad));
+        assertTrue(Squad.getInstances().contains(squad2));
+    }
+  
 }
 //testing codes that display newly created object
    /* @After

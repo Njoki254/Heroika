@@ -4,16 +4,18 @@ public class Squad {
 
     private String squadCause;
     private String squadName;
-    private int maxSize;
+
+    private int squadSize;
     private static ArrayList<Squad> instances = new ArrayList<>();
 
     private static int id;
 
-    public Squad (String squadName, String squadCause){
+    public Squad (String squadName, String squadCause,int squadSize){
 
         this.squadName = squadName;
         this.squadCause= squadCause;
-        this.maxSize= 5;
+        this.squadSize= squadSize;
+
         instances.add(this);
         this.id=instances.size(); //size of array list if 1 item then id = 1,
     }
@@ -27,14 +29,17 @@ public class Squad {
         return squadName;
     }
 
-    public int getMaxSize() {
-        return maxSize;
-    }
+
+
+    public int getSquadSize() {return squadSize;}
 
     public static ArrayList<Squad> getInstances() {
         return instances;//arraylist represents data type to be returned,
     }
 
+    public static void clear() {
+        instances.clear();
+    }
 
     public int getId() {
         return id;
