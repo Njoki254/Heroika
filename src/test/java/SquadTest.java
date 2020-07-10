@@ -40,13 +40,13 @@ public class SquadTest {
     }
 
     @Test
-    public void testGetAllInstances(){
+    public void testGetSquadInstances(){
         Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", 2);
         Squad squad2 = new Squad("Avengers", "fight off corona virus",5);
         assertTrue(Squad.getInstances().contains(mySquad));
         assertTrue(Squad.getInstances().contains(squad2));
     }
-  
+
 }
 //testing codes that display newly created object
    /* @After

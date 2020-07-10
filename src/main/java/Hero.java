@@ -51,4 +51,8 @@ public class Hero {
         this.heroStrength = heroStrength;
         this.heroWeakness = heroWeakness;
     }
+    public static void clear() {
+        instances.clear();
+    }
+
 }

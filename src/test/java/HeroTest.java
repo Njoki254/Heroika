@@ -29,13 +29,18 @@ public class HeroTest {
     }
     @Test
     public void testGetAllInstances(){
-        Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", 2);
-        Squad squad2 = new Squad("Avengers", "fight off corona virus",5);
-        assertTrue(Squad.getInstances().contains(mySquad));
-        assertTrue(Squad.getInstances().contains(squad2));
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful");
+        Hero hero2 = new Hero("Okoye", "great with swords","anger management issues");
+        assertTrue(Hero.getInstances().contains(myHero));
+        assertTrue(Hero.getInstances().contains(hero2));
     }
 
-
+    @Test
+    public void testGetId(){
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful");
+        Squad.clear();
+        assertEquals(3, myHero.getId());
+    }
 }
 /*@After
 public void tearDown() {
