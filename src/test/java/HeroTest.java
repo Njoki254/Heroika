@@ -5,39 +5,45 @@ public class HeroTest {
 
     @Test
     public void Hero_instantiatesCorrectly_true() {
-        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful");
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
         assertEquals(true, myHero instanceof Hero);
     }
     @Test
-    public void getName_forHeroesName_String() {
-        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful");
+    public void getHero1() {
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
         String expected = "Nakia";
-        assertEquals(expected, myHero.getHeroName());
+        assertEquals(expected, myHero.getHero1());
     }
 
     @Test
-    public void getWeakness() {
-        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful");
+    public void getHero2() {
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
         String expected = "Too merciful";
-        assertEquals(expected, myHero.getHeroWeakness());
+        assertEquals(expected, myHero.getHero2());
     }
     @Test
-    public void getStrength() {
-        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful");
+    public void getHero3() {
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
         String expected = "Can run fast";
-        assertEquals(expected, myHero.getHeroStrength());
+        assertEquals(expected, myHero.getHero2());
+    }
+    @Test
+    public void getHero4() {
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
+        String expected = "Can run fast";
+        assertEquals(expected, myHero.getHero2());
     }
     @Test
     public void testGetAllInstances(){
-        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful");
-        Hero hero2 = new Hero("Okoye", "great with swords","anger management issues");
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
+        Hero hero2 = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
         assertTrue(Hero.getInstances().contains(myHero));
         assertTrue(Hero.getInstances().contains(hero2));
     }
 
     @Test
     public void testGetId(){
-        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful");
+        Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
         Squad.clear();
         assertEquals(3, myHero.getId());
     }

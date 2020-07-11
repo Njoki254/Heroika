@@ -11,6 +11,7 @@ public class Squad {
 
 
     private static int id;
+    private boolean posted; //i’m new
 
     public Squad (String squadName, String squadCause, String members){
 
@@ -30,6 +31,9 @@ public class Squad {
 
     public String getSquadName() {
         return squadName;
+    }
+    public String getMembers() {
+        return members;
     }
 
 
@@ -54,8 +58,12 @@ public class Squad {
         instances.remove(id-1);
 
     }
-    public void update(String squadCause, String squadName) {
+    public void update(String squadCause, String squadName, String members) {
         this.squadCause = squadCause;
         this.squadName = squadName;
+        this.members= members;
+    }
+    public boolean getSquadPosted(){ //new too
+        return this.posted;
     }
 }

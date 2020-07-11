@@ -46,6 +46,11 @@ public class SquadTest {
         assertTrue(Squad.getInstances().contains(mySquad));
         assertTrue(Squad.getInstances().contains(squad2));
     }
+    @Test
+    public void getSquadisPosted() throws Exception {
+        Squad mySquad = new Squad("Name","Poverty", "Nakia");
+        assertEquals(false, mySquad.getSquadPosted()); //should never start as published
+    }
 
 }
 //testing codes that display newly created object

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import static java.lang.Integer.parseInt;
 import static spark.Spark.*;
+import static spark.Spark.get;
 
 public class App {
     static int getHerokuAssignedPort() {
@@ -70,13 +71,18 @@ public class App {
             String squadName = request.queryParams("squadName");
             String squadCause = request.queryParams("squadCause");
             String members= request.queryParams("members");
+            String hero1 = request.queryParams("hero1");
+            String hero2= request.queryParams("hero2");
+            String hero3 = request.queryParams("hero3");
+            String hero4 = request.queryParams("hero4");
+            Hero newHeroes = new Hero(hero1,hero2,hero3, hero4);
 
             Squad newSquad = new Squad(squadName, squadCause, members);//constructor
             //String members = request.queryParams("members");
 
-
+            model.put("newHeroes", newHeroes);
             model.put( "newSquad",newSquad);//stores the newSquad
-
+            model.put("members", members);
             // model.put("members", members);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
@@ -92,9 +98,26 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String newName= req.queryParams("name");
             String newCause= req.queryParams("cause");
+            String newMember= req.queryParams("member");
             int idOfSquadToEdit = parseInt(req.params("id"));
             Squad editSquad = Squad.findSquadById(idOfSquadToEdit);
-            editSquad.update(newName,newCause);
+            editSquad.update(newName,newCause, newMember );
+            return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/squads/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+
+            String hero1 = request.queryParams("hero1");
+            String hero2= request.queryParams("hero2");
+            String hero3 = request.queryParams("hero3");
+            String hero4 = request.queryParams("hero4");
+            Hero newHeroes = new Hero(hero1,hero2,hero3, hero4);
+
+           ;//constructor
+            //String members = request.queryParams("members");
+
+            model.put("newHeroes", newHeroes);//stores the newSquad
+            // model.put("members", members);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
         /*//To display all objects created
