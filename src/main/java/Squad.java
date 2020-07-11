@@ -47,7 +47,7 @@ public class Squad {
     public static void clear() {
         instances.clear();
     }
-
+//Why -1? Well, the length of an array is not the same as the index, remember?. Arrays and ArrayLists are 0-based in their indexing.
     public int getId() {
         return id;
     }
@@ -66,4 +66,5 @@ public class Squad {
     public boolean getSquadPosted(){ //new too
         return this.posted;
     }
+
 }

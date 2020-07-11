@@ -51,6 +51,16 @@ public class SquadTest {
         Squad mySquad = new Squad("Name","Poverty", "Nakia");
         assertEquals(false, mySquad.getSquadPosted()); //should never start as published
     }
+    @Test
+    public void findReturnsCorrectSquad() throws Exception {
+        Squad squad= setupNewSquad();
+        Squad otherSquad = new Squad("Name","Poverty", "Nakia");;
+        assertEquals(2, Squad.findSquadById(otherSquad.getId()).getId());
+    }
+
+    public Squad setupNewSquad() {
+        return new Squad("Name","Poverty", "Nakia");
+    }
 
 }
 //testing codes that display newly created object
