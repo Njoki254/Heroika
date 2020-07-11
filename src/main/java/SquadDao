@@ -1,0 +1,26 @@
+public interface SquadDao {
+   void add (squad squad);
+
+   List<Squad> findAll();
+   @Override
+public void add(Match match) {
+   String sql = "INSERT INTO matches (name, location) VALUES (:name, :location)";
+   try(Connection con = sql2o.open()){
+       int id = (int) con.createQuery(sql, true)
+               .bind(match) //use name and location from match object for sql
+               .executeUpdate()
+               .getKey();
+       match.setId(id);
+   } catch (Sql2oException ex) {
+       System.out.println(“there was a problem adding the match);
+   }
+}
+
+@Override
+public List<Match> findAll() {
+   try(Connection con = sql2o.open()){
+       return con.createQuery("SELECT * FROM matches")
+               .executeAndFetch(Match.class);
+   }
+
+}
