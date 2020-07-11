@@ -78,6 +78,28 @@ public class App {
             // model.put("members", members);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        post("/squads/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+
+            String hero1 = request.queryParams("hero1");
+            String hero2= request.queryParams("hero2");
+            String hero3 = request.queryParams("hero3");
+            String hero4 = request.queryParams("hero4");
+            Hero newHeroes = new Hero(hero1,hero2,hero3, hero4);
+
+           ;//constructor
+            //String members = request.queryParams("members");
+
+            model.put("newHeroes", newHeroes);//stores the newSquad
+            // model.put("members", members);
+            return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/squads/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Squad.clear();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
         get("/squads/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfSquadToFind = parseInt(req.params(":id")); //pull id - must match route segment
@@ -94,22 +116,6 @@ public class App {
             int idOfSquadToEdit = parseInt(req.params("id"));
             Squad editSquad = Squad.findSquadById(idOfSquadToEdit);
             editSquad.update(newName,newCause, newMember );
-            return new ModelAndView(model, "Success.hbs");
-        }, new HandlebarsTemplateEngine());
-        post("/squads/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-
-            String hero1 = request.queryParams("hero1");
-            String hero2= request.queryParams("hero2");
-            String hero3 = request.queryParams("hero3");
-            String hero4 = request.queryParams("hero4");
-            Hero newHeroes = new Hero(hero1,hero2,hero3, hero4);
-
-           ;//constructor
-            //String members = request.queryParams("members");
-
-            model.put("newHeroes", newHeroes);//stores the newSquad
-            // model.put("members", members);
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
         get("/squads/:id", (req, res) -> {
@@ -141,11 +147,7 @@ public class App {
             deleteSquad.deleteSquad();
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/squads/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            Squad.clear();
-            return new ModelAndView(model, "success.hbs");
-        }, new HandlebarsTemplateEngine());
+
         /*//To display all objects created
         get("/", (req, res) -> {
             //just for testing - make two new objects so we have something to retrieve
