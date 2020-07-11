@@ -18,10 +18,10 @@
             <br>
         </div>
 
-        {{#if posts}}
-            {{#each posts }}
+        {{#if squads}}
+            {{#each squads }}
                 <p>Current post:</p>
-                <p>{{ content }} <a href="/posts/{{id}}">read more...</a></p>
+                <p>{{ squadname }} <a href="/squads/{{id}}">read more...</a></p>
             {{/each}}
         {{else}}
 

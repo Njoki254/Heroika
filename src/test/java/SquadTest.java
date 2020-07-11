@@ -61,6 +61,36 @@ public class SquadTest {
     public Squad setupNewSquad() {
         return new Squad("Name","Poverty", "Nakia");
     }
+    @Test
+    public void updateChangesSquadContent() throws Exception {
+        Squad post = setupNewSquad();
+        String formerName = post.getSquadName();
+        String formerCause = post.getSquadCause();
+        int formerId = post.getId();
+
+        post.update("Name","Poverty", "Nakia");
+
+        assertEquals(formerId, post.getId());
+
+        assertNotEquals(formerName, post.getSquadName());
+        assertNotEquals(formerCause, post.getSquadCause());
+    }
+    @Test
+    public void deleteDeletesASpecificPost() throws Exception {
+        Squad post = setupNewSquad();
+        Squad otherSquad = new Squad("Name","Poverty", "Nakia");
+        post.deleteSquad();
+        assertEquals(1, Squad.getInstances().size()); //one is left
+        assertEquals(Squad.getInstances().get(0).getId(), 2); //the one that was deleted has the id of 2. Why do we care?
+    }
+    @Test
+    public void deleteAllSquads() throws Exception {
+        Squad squad = setupNewSquad();
+        Squad otherSquad = setupNewSquad();
+
+        Squad.clear();
+        assertEquals(0, Squad.getInstances().size());
+    }
 
 }
 //testing codes that display newly created object

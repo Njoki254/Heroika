@@ -40,20 +40,12 @@ public class App {
         }, new HandlebarsTemplateEngine());
         get("/Hero-Details", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "Hero-Details.hbs");
+            return new ModelAndView(model, "squad-details.hbs");
         }, new HandlebarsTemplateEngine());
         //form ya kucreate
         get("/squads/new",(req,res)->{
             Map<String,Object> model = new HashMap<>();
             return new ModelAndView(model,"Squad-Form.hbs");
-        }, new HandlebarsTemplateEngine());
-        get("/squad-store/:id", (request, response) -> {//colon is collecting id.
-            Map<String, Object> model = new HashMap<String, Object>();
-            //code that is collecting all the instances of squad available
-            int deleteSquadId = parseInt(request.queryParams("id"));
-            Squad.deleteSquad(deleteSquadId); //how to call a method from class
-            response.redirect("/");
-            return null;
         }, new HandlebarsTemplateEngine());
 
         //To get all posts in one place
@@ -119,6 +111,40 @@ public class App {
             model.put("newHeroes", newHeroes);//stores the newSquad
             // model.put("members", members);
             return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/squads/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfSquadToFind = Integer.parseInt(req.params(":id")); //pull id - must match route segment
+            Squad foundSquad = Squad.findSquadById(idOfSquadToFind); //use it to find post
+            model.put("squad", foundSquad); //add it to model for template to display
+            return new ModelAndView(model, "squad-details.hbs"); //individual post page.
+        }, new HandlebarsTemplateEngine());
+        get("/squads/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPostToEdit = Integer.parseInt(req.params("id"));
+            Squad editPost = Squad.findSquadById(idOfPostToEdit);
+            model.put("editPost", editPost);
+            return new ModelAndView(model, "Squad-Form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/squads/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newName = req.queryParams("squadName");
+            int idOfPostToEdit = Integer.parseInt(req.params("id"));
+            Squad editSquad = Squad.findSquadById(idOfPostToEdit);
+            editSquad.update(newName); //don’t forget me
+            return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/squads/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfSquadToDelete = Integer.parseInt(req.params("id")); //pull id - must match route segment
+            Squad deleteSquad = Squad.findSquadById(idOfSquadToDelete); //use it to find post
+            deleteSquad.deleteSquad();
+            return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/squads/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Squad.clear();
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
         /*//To display all objects created
         get("/", (req, res) -> {

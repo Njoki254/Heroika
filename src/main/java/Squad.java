@@ -54,10 +54,7 @@ public class Squad {
     public static Squad findSquadById(int id){
         return instances.get(id-1); //because indexing starts at zero
     }
-    public static void deleteSquad(int id){
-        instances.remove(id-1);
 
-    }
     public void update(String squadCause, String squadName, String members) {
         this.squadCause = squadCause;
         this.squadName = squadName;
@@ -66,5 +63,12 @@ public class Squad {
     public boolean getSquadPosted(){ //new too
         return this.posted;
     }
+    public void update(String content) {
+        this.squadCause = content;
+    }
+    public void deleteSquad(){
+        instances.remove(id-1); //same reason
+    }
+
 
 }
