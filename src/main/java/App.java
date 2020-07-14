@@ -29,15 +29,18 @@ public class App {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "Homepage.hbs");
         }, new HandlebarsTemplateEngine());
+        //display hero profiles
         get("/profiles", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "Heroes-Profile.hbs");
         }, new HandlebarsTemplateEngine());
+        //display squad-form
         get("/squad-form", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "Squad-Form.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/Hero-Details", (request, response) -> {
+        //display hero-form
+        get("/squad-Details", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "squad-details.hbs");
         }, new HandlebarsTemplateEngine());
@@ -63,11 +66,11 @@ public class App {
             String squadCause = request.queryParams("squadCause");
             //String[] members = request.queryParamsValues("members"); important line for working with checkboxes
             String members= request.queryParams("members");
-            String hero1 = request.queryParams("hero1");
-            String hero2= request.queryParams("hero2");
-            String hero3 = request.queryParams("hero3");
-            String hero4 = request.queryParams("hero4");
-            Hero newHeroes = new Hero(hero1,hero2,hero3, hero4);
+            String heroName = request.queryParams("heroName");
+            String heroStrength= request.queryParams("heroStrength");
+            String heroWeakness = request.queryParams("heroWeakness");
+            int heroAge = parseInt(request.params("heroAge"));
+            Hero newHeroes = new Hero(heroName,heroAge,heroStrength,heroWeakness);
 
             Squad newSquad = new Squad(squadName, squadCause, members);//constructor
             //String members = request.queryParams("members");
@@ -82,11 +85,11 @@ public class App {
         post("/squads/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
 
-            String hero1 = request.queryParams("hero1");
-            String hero2= request.queryParams("hero2");
-            String hero3 = request.queryParams("hero3");
-            String hero4 = request.queryParams("hero4");
-            Hero newHeroes = new Hero(hero1,hero2,hero3, hero4);
+            String heroName = request.queryParams("heroName");
+            String heroStrength= request.queryParams("heroStrength");
+            String heroWeakness = request.queryParams("heroWeakness");
+            int heroAge = parseInt(request.params("heroAge"));
+            Hero newHeroes = new Hero(heroName,heroAge,heroStrength,heroWeakness);
 
            ;//constructor
             //String members = request.queryParams("members");
@@ -125,6 +128,13 @@ public class App {
             model.put("squad", foundSquad); //add it to model for template to display
             return new ModelAndView(model, "squad-details.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
+        get("/heroes/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHeroToFind = Integer.parseInt(req.params(":id")); //pull id - must match route segment
+            Hero foundHero = Hero.findHeroById(idOfHeroToFind); //use it to find post
+            model.put("hero", foundHero); //add it to model for template to display
+            return new ModelAndView(model, "squad-details.hbs"); //individual post page.
+        }, new HandlebarsTemplateEngine());
         get("/squads/:id/update", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfPostToEdit = Integer.parseInt(req.params("id"));
@@ -145,6 +155,31 @@ public class App {
             int idOfSquadToDelete = Integer.parseInt(req.params("id")); //pull id - must match route segment
             Squad deleteSquad = Squad.findSquadById(idOfSquadToDelete); //use it to find post
             deleteSquad.deleteSquad();
+            return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/heroes/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPostToEdit = Integer.parseInt(req.params("id"));
+            Squad editPost = Squad.findSquadById(idOfPostToEdit);
+            model.put("editPost", editPost);
+            return new ModelAndView(model, "hero-Form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/heroes/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String heroName = req.queryParams("heroName");
+            String heroStrength= req.queryParams("heroStrength");
+            String heroWeakness = req.queryParams("heroWeakness");
+            int heroAge = parseInt(req.params("heroAge"));
+            int idOfHeroToEdit = Integer.parseInt(req.params("id"));
+            Hero editHero = Hero.findHeroById(idOfHeroToEdit);
+            editHero.update(heroName,heroAge,heroStrength,heroWeakness); //don’t forget me
+            return new ModelAndView(model, "Success.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/heroes/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHeroToDelete = Integer.parseInt(req.params("id")); //pull id - must match route segment
+            Hero deleteHero = Hero.findHeroById(idOfHeroToDelete); //use it to find post
+            deleteHero.deleteHero();
             return new ModelAndView(model, "Success.hbs");
         }, new HandlebarsTemplateEngine());
 

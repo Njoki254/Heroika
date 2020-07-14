@@ -75,7 +75,7 @@ public class SquadTest {
         assertNotEquals(formerCause, post.getSquadCause());
     }
     @Test
-    public void deleteDeletesASpecificPost() throws Exception {
+    public void deleteSpecificPost() throws Exception {
         Squad post = setupNewSquad();
         Squad otherSquad = new Squad("Name","Poverty", "Nakia");
         post.deleteSquad();

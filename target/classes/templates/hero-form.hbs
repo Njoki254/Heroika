@@ -1,0 +1,40 @@
+{{#partial "content"}}
+
+
+
+
+    <div class="container">
+        <h2 class="text-center"><strong>Create a Squad</strong></h2>
+
+        <form action="/heroes/new" method="post">
+            <div class="form-group">
+                <label class="active " for="heroName">Hero Name</label>
+                <input id="heroName" name="heroName" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label class="active" for="heroAge">Hero Age</label>
+                <input id="maxSize" name="heroAge" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label class="active" for="heroStrength">Hero Strength</label>
+                <input id="heroStrength" name="heroStrength" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="active" for="heroWeakness">Hero Weakness</label>
+                <input id="heroWeakness" name="heroWeakness" type="text" class="form-control">
+            </div>
+            <button type="submit" class=" btn btn-success" >Create Hero!</button>
+        </form>
+    </div>
+    <!--
+            <h4>Edit this Post!</h4>
+            <form action="/posts/{{editPost.id}}/update" method="post">
+                <label for="content">Edit this post's content</label>
+                <input id="content" name="content" type="text" value="{{editPost.content}}">-->
+
+
+{{/partial}}
+
+{{> layout.hbs}}

@@ -25,6 +25,8 @@ public class Squad {
     }
 
 
+
+
     public String getSquadCause() {
         return squadCause;
     }

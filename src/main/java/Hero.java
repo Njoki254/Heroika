@@ -2,59 +2,77 @@ import java.util.ArrayList;
 
 public class Hero {
 
-    private String hero1;
-    private String hero2;
-    private String hero3;
-    private String hero4;
+    private String heroName;
+    private int heroAge;
+    private String heroStrength;
+    private String heroWeakness;
 
     private static ArrayList<Hero> instances = new ArrayList<>();
 
+
     private static int id;
+    private boolean posted; //i’m new
 
-    public Hero (String hero1, String hero2, String hero3, String hero4){
+    public Hero (String heroName, int heroAge, String heroStrength, String heroWeakness) {
 
-        this.hero1 = hero1;
-        this.hero2= hero3;
-        this.hero3= hero3;
-        this.hero3= hero3;
+        this.heroName = heroName;
+        this.heroAge= heroAge;
+        this.heroStrength= heroStrength;
+        this.heroWeakness= heroWeakness;
+
         instances.add(this);
         this.id=instances.size(); //size of array list if 1 item then id = 1,
     }
 
 
-    public String getHero1() {
-        return hero1;
+
+
+    public String getHeroName() {
+        return heroName;
     }
 
-    public String getHero2() {
-        return hero2;
+    public String getHeroStrength() {
+        return heroStrength;
     }
+    public String getHeroWeakness() {
+        return heroWeakness;
+    }
+    public int getHeroAge(){ return heroAge;}
 
-    public String getHero3(){ return hero3;}
-    public String getHero4(){ return hero4;}
+
+
+
 
     public static ArrayList<Hero> getInstances() {
         return instances;//arraylist represents data type to be returned,
     }
 
-
+    public static void clear() {
+        instances.clear();
+    }
+    //Why -1? Well, the length of an array is not the same as the index, remember?. Arrays and ArrayLists are 0-based in their indexing.
     public int getId() {
         return id;
     }
     public static Hero findHeroById(int id){
         return instances.get(id-1); //because indexing starts at zero
     }
-    public static void deleteHero(int id){
-        instances.remove(id-1);
 
+    public void update(String heroName, int heroAge, String heroStrength, String heroWeakness) {
+        this.heroName = heroName;
+        this.heroAge= heroAge;
+        this.heroStrength= heroStrength;
+        this.heroWeakness= heroWeakness;
     }
-    public void updateHero(String heroName, String heroStrength, String heroWeakness) {
-        this.hero1 = hero1;
-        this.hero2 = hero2;
-        this.hero3 = hero3;
+    public boolean getHeroPosted(){ //new too
+        return this.posted;
     }
-    public static void clear() {
-        instances.clear();
+    public void update(String content) {
+        this.heroName = content;
     }
+    public void deleteHero(){
+        instances.remove(id-1); //same reason
+    }
+
 
 }
