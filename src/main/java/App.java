@@ -61,6 +61,7 @@ public class App {
             Map<String, Object> model = new HashMap<String, Object>();
             String squadName = request.queryParams("squadName");
             String squadCause = request.queryParams("squadCause");
+            //String[] members = request.queryParamsValues("members"); important line for working with checkboxes
             String members= request.queryParams("members");
             String hero1 = request.queryParams("hero1");
             String hero2= request.queryParams("hero2");
