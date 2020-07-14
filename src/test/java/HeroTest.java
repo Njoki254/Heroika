@@ -24,13 +24,13 @@ public class HeroTest {
     @Test
     public void getHero3() {
         Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
-        String expected = "Can run fast";
+        String expected = "Too merciful";
         assertEquals(expected, myHero.getHero2());
     }
     @Test
     public void getHero4() {
         Hero myHero = new Hero("Nakia", "Can run fast", "Too merciful","Okoye");
-        String expected = "Can run fast";
+        String expected = "Too merciful";
         assertEquals(expected, myHero.getHero2());
     }
     @Test

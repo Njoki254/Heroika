@@ -4,15 +4,22 @@
     <div class="container" id="displaySquad">
         <h1 id="ListOfSquadsCreated"> List of Squads Created</h1>
         {{#each squadInstance}}
-            Name: {{squadName}},<br>
-            Cause: {{squadCause}}
+            Name: {{squadName}}<br>
+            Cause: {{squadCause}}<br>
+
+            Team Leader: {{members}}
+
+
+            {{hero2}}
+            {{hero3}}
+            {{hero4}}
             <br>
+
             <a href="/squad-store/{{id}}" width="5px" height="5px">Delete Squad</a>
             <br>
             <br>
             <br>
         {{/each}}
-
     </div>
 
 

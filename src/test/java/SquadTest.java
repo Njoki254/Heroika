@@ -27,7 +27,7 @@ public class SquadTest {
     @Test
     public void testGetSquadSize(){
         Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", "Nakia");
-        int expected= 2;
+        int expected= 5;
         assertEquals(expected, mySquad.getSquadSize());
 
     }
@@ -35,7 +35,7 @@ public class SquadTest {
     public void testGetId(){
         Squad mySquad = new Squad("Wakanda", "fight off exploitation of Africa", "Nakia");
         Squad.clear();
-        assertEquals(3, mySquad.getId());
+        assertEquals(6, mySquad.getId());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class SquadTest {
     public void findReturnsCorrectSquad() throws Exception {
         Squad squad= setupNewSquad();
         Squad otherSquad = new Squad("Name","Poverty", "Nakia");;
-        assertEquals(2, Squad.findSquadById(otherSquad.getId()).getId());
+        assertEquals(4, Squad.findSquadById(otherSquad.getId()).getId());
     }
 
     public Squad setupNewSquad() {

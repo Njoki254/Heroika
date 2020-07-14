@@ -84,9 +84,7 @@
                     <processTypes>
                         <web>java -jar target/java-heroika-1.0-jar-with-dependencies.jar</web>
                     </processTypes>
-                    <processTypes>
-                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* App</web>
-                    </processTypes>
+
                 </configuration>
             </plugin>
             <plugin>
