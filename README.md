@@ -4,10 +4,10 @@
 
 Njoki Kamau
  
- [Heroika Homepage](./src/main/resources/public/images/homepage2.jpg)
+ ![Heroika Homepage](./src/main/resources/public/images/homepage2.jpg)
  
  ## Link to Deployed Site
- 
+ [Deployed Site](heroika.herokuapp.com/)
 
  ## BDD
  
