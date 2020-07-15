@@ -4,7 +4,7 @@
 
 Njoki Kamau
  
- [Heroika Homepage](/src/main/resources/public/images/homepage.jpg)
+ [Heroika Homepage](./src/main/resources/public/images/homepage2.jpg)
  
  ## Link to Deployed Site
  
