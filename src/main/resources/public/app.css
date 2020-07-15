@@ -13,7 +13,13 @@ font-weight: 1000;
 #ListOfSquadsCreated{
 text-align: center;
 }
+#ListOfHeroesCreated{
+text-align: center;
+}
 #displaySquad{
+font-size: 25px;
+}
+#displayHeroes{
 font-size: 25px;
 }
 

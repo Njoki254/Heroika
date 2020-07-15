@@ -1,0 +1,31 @@
+
+{{#partial "content"}}
+
+    <div class="container" id="displayHero">
+        <h1 id="ListOfHeroesCreated"> List of Heroes You Created</h1>
+        {{#each heroInstance}}
+            Name: {{heroName}}<br>
+            Age: {{heroAge}}<br>
+            Strength: {{heroStrength}}<br>
+            Weakness: {{heroWeakness}}<br>
+
+
+            <br>
+            <a href="/heroes/{{id}}/update" width="5px" height="5px">Update Hero</a><br>
+            <a href="/heroes/{{id}}/delete" width="5px" height="5px">Delete Hero</a>
+
+            <br>
+            <br>
+            <br>
+        {{/each}}
+    </div>
+
+
+
+
+
+
+
+{{/partial}}
+
+{{> layout.hbs}}
