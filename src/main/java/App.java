@@ -141,15 +141,12 @@ public class App {
             return new ModelAndView(model, "Heroes-Profile.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
         //post: process a form to update a squad
-        post("/posts/:id/update", (req, res) -> { //URL to make new post on POST route
+        get("/squads/:id/update", (req, res) -> { //URL to make new post on POST route
             Map<String, Object> model = new HashMap<>();
-            String newName= req.queryParams("name");
-            String newCause= req.queryParams("cause");
-            String newMember= req.queryParams("member");
             int idOfSquadToEdit = parseInt(req.params("id"));
             Squad editSquad = Squad.findSquadById(idOfSquadToEdit);
-            editSquad.update(newName,newCause, newMember );
-            return new ModelAndView(model, "Success.hbs");
+            model.put("editSquad", editSquad)
+            return new ModelAndView(model, "Squad-Form.hbs");
         }, new HandlebarsTemplateEngine());
         get("/squads/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

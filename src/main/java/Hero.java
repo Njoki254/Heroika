@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Hero {
@@ -6,22 +7,28 @@ public class Hero {
     private int heroAge;
     private String heroStrength;
     private String heroWeakness;
+    private int squadId; //foreign key.to pick data of which squad each hero is in this is necessary for one to many relationship, foreign key
 
     private static ArrayList<Hero> instances = new ArrayList<>();
+    private LocalDateTime heroCreatedAt; //see constructor and my method
 
 
-    private static int id;
+    private int id; //to find a specific heroobject
     private boolean posted; //i’m new
-
+//constructors are for instantiating objects
+    //this.id = id;
+    //constructor is for avoiding creating objects manually,
     public Hero (String heroName, int heroAge, String heroStrength, String heroWeakness) {
 
         this.heroName = heroName;
         this.heroAge= heroAge;
         this.heroStrength= heroStrength;
         this.heroWeakness= heroWeakness;
+        this.heroCreatedAt = LocalDateTime.now();
+
 
         instances.add(this);
-        this.id=instances.size(); //size of array list if 1 item then id = 1,
+        this.id=instances.size(); //size of array list if 1 item then id = 1, can be replaced with database which will store the data instead
     }
 
 
@@ -38,6 +45,16 @@ public class Hero {
         return heroWeakness;
     }
     public int getHeroAge(){ return heroAge;}
+    public LocalDateTime getHeroCreatedAt() {
+        return heroCreatedAt;
+    }
+    public void setId(int id){
+        this.id=id;
+    }//outside of the constructor because database is what is creating it, you make database assign id so it can be unique and you don't have to hardcoding the values,
+    //if you do it yourself it won't be unique and wont be able to assign specific idea.
+    public int getSquadId(){
+        return squadId;
+    }
 
 
 

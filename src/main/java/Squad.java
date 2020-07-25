@@ -1,3 +1,5 @@
+import java.security.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Squad {
@@ -8,9 +10,10 @@ public class Squad {
     private int squadSize;
     private String members;
     private static ArrayList<Squad> instances = new ArrayList<>();
+    private Timestamp squadCreatedAt; //see constructor and my method changed from local date time
 
 
-    private static int id;
+    private int id;
     private boolean posted; //i’m new
 
     public Squad (String squadName, String squadCause, String members){
@@ -20,8 +23,12 @@ public class Squad {
         this.members= members;
         this.squadSize= 5;
 
+
         instances.add(this);
         this.id=instances.size(); //size of array list if 1 item then id = 1,
+    }
+    public Timestamp getSquadCreatedAt() {
+        return squadCreatedAt;
     }
 
 
@@ -53,21 +60,21 @@ public class Squad {
     public int getId() {
         return id;
     }
+    public void setId(){this.id=id; }
     public static Squad findSquadById(int id){
         return instances.get(id-1); //because indexing starts at zero
     }
 
-    public void update(String squadCause, String squadName, String members) {
+    public void update(String squadCause, String squadName, int squadSize, String members) {
         this.squadCause = squadCause;
         this.squadName = squadName;
+        this.squadSize= squadSize;
         this.members= members;
     }
     public boolean getSquadPosted(){ //new too
         return this.posted;
     }
-    public void update(String content) {
-        this.squadCause = content;
-    }
+
     public void deleteSquad(){
         instances.remove(id-1); //same reason
     }

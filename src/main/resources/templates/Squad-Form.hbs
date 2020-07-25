@@ -1,10 +1,16 @@
 {{#partial "content"}}
 
 
-
-
-    <div class="container">
-        <h2 class="text-center"><strong>Create a Squad</strong></h2>
+    {{#if editSquad}}
+        <h1>Edit this Squad!</h1>
+        <form action="/posts/{{editSquad.id}}/update" method="post">
+            <label for="content">Edit this Squad's content</label>
+            <input id="content" name="content" type="text" value="{{editSquad.squadName}}">
+            <input id="content" name="content" type="text" value="{{editSquad.squadCause}}">
+            <input id="content" name="content" type="text" value="{{editSquad.squadSize}}">
+    {{else}}
+        <div class="container">
+            <h2 class="text-center"><strong>Create a Squad</strong></h2>
 
         <form action="/squads/new" method="post">
             <div class="form-group">
@@ -21,75 +27,50 @@
                 <label class="active" for="squadCause">Squad Cause</label>
                 <input id="squadCause" name="squadCause" type="text" class="form-control">
             </div>
-            <div class="container" #listofheroes>
-                <h3><strong>Select The Team Leader( Only Select one).</strong></h3>
-                <p><a href='/profiles' >Click here to review the Heroes' Profile Before Selection.</a></p>
-                <div class= "row">
-                    <div class="col-md-4">
-                        <input type="radio" id="1" name="members" values="Okoye">
-                        <label for="member1"> Okoye</label><br>
-                        <input type="radio" id="2" name="members" value="Lupita">
-                        <label for="member2"> Lupita</label><br>
-                        <input type="radio" id="3" name="members" value="T'Challa">
-                        <label for="member3"> T'Challa</label><br>
+        <div class="container" #listofheroes>
+            <h3><strong>Select The Team Leader( Only Select one).</strong></h3>
+            <p><a href='/profiles' >Click here to review the Heroes' Profile Before Selection.</a></p>
+            <div class= "row">
+                <div class="col-md-4">
+                    <input type="radio" id="1" name="members" values="Okoye">
+                    <label for="member1"> Okoye</label><br>
+                    <input type="radio" id="2" name="members" value="Lupita">
+                    <label for="member2"> Lupita</label><br>
+                    <input type="radio" id="3" name="members" value="T'Challa">
+                    <label for="member3"> T'Challa</label><br>
 
 
-                    </div>
-                    <div class="col-md-4">
-                        <input type="radio" id="4" name="members" value="Killmonger">
-                        <label for="member4"> Killmonger</label><br>
-                        <input type="radio" id="5" name="members" value="Minion">
-                        <label for="member5"> Minion</label><br>
-                        <input type="radio" id="6" name="members" value="Nairobi">
-                        <label for="member6"> Nairobi</label><br>
-                        <input type="radio" id="7" name="members" value="Storm">
-                        <label for="member7"> Storm</label><br>
-
-
-
-                    </div>
-                    <div class="col-md-4">
-                        <input type="radio" id="8" name="members" value="Shuri">
-                        <label for="member8"> Shuri</label><br>
-                        <input type="radio" id="9" name="members" value="The Couple">
-                        <label for="member9"> The Couple</label><br>
-                        <input type="radio" id="10" name="members" value="Mbaku">
-                        <label for="member10"> Mbaku</label><br>
-                    </div>
                 </div>
+                <div class="col-md-4">
+                    <input type="radio" id="4" name="members" value="Killmonger">
+                    <label for="member4"> Killmonger</label><br>
+                    <input type="radio" id="5" name="members" value="Minion">
+                    <label for="member5"> Minion</label><br>
+                    <input type="radio" id="6" name="members" value="Nairobi">
+                    <label for="member6"> Nairobi</label><br>
+                    <input type="radio" id="7" name="members" value="Storm">
+                    <label for="member7"> Storm</label><br>
 
-              <!--  <div class="form-group">
-                    <label class="active" for="hero1">Squad Member 2</label>
-                    <input id="hero1" name="hero1" type="text" class="form-control">
+
+
                 </div>
-                <div class="form-group">
-                    <label class="active" for="hero2">Squad Member 3</label>
-                    <input id="hero2" name="hero2" type="text" class="form-control">
+                <div class="col-md-4">
+                    <input type="radio" id="8" name="members" value="Shuri">
+                    <label for="member8"> Shuri</label><br>
+                    <input type="radio" id="9" name="members" value="The Couple">
+                    <label for="member9"> The Couple</label><br>
+                    <input type="radio" id="10" name="members" value="Mbaku">
+                    <label for="member10"> Mbaku</label><br>
                 </div>
-                <div class="form-group">
-                    <label class="active" for="hero3">Squad Member 4</label>
-                    <input id="hero3" name="hero3" type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label class="active" for="hero4">Squad Member 5</label>
-                    <input id="hero4" name="hero4" type="text" class="form-control">
-                </div>-->
-
-
-
-
-
             </div>
+        </div>
+
+    {{/if}}
 
             <button type="submit" class=" btn btn-success" >Create Squad!</button>
         </form>
     </div>
     <!--
-            <h4>Edit this Post!</h4>
-            <form action="/posts/{{editPost.id}}/update" method="post">
-                <label for="content">Edit this post's content</label>
-                <input id="content" name="content" type="text" value="{{editPost.content}}">-->
-
 
 {{/partial}}
 

@@ -1,6 +1,8 @@
 
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.*;
 
@@ -37,6 +39,12 @@ public class HeroTest {
         Hero.clear();
         assertEquals(2, myHero.getId());
     }
+    @Test
+    public void getCreatedAt_instantiatesWithCurrentTime_today() throws Exception{
+        Hero myHero = setupNewHero(); //see below
+        assertEquals(LocalDateTime.now().getDayOfWeek(), myHero.getHeroCreatedAt().getDayOfWeek());
+    }
+
 
     @Test
     public void testGetHeroInstances(){
@@ -66,19 +74,19 @@ public class HeroTest {
         String formerName = post.getHeroName();
         String formerStrength = post.getHeroStrength();
         String formerWeakness = post.getHeroWeakness();
+        LocalDateTime formerDate = post.getHeroCreatedAt();
         int formerAge = post.getHeroAge();
         int formerId = post.getId();
 
         post.update( "T'Challa", 30, "agility",  "gullibility");
 
         assertEquals(formerId, post.getId());
-
+        assertEquals(formerDate, post.getHeroCreatedAt());
         assertNotEquals("Nakia", post.getHeroName());
         assertNotEquals(33, post.getHeroAge());
         assertNotEquals("runs fast", post.getHeroStrength());
         assertNotEquals("ill-tempered", post.getHeroWeakness());
     }
-
 
 
   /*  @Test
