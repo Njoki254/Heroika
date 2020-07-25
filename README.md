@@ -13,7 +13,7 @@ Njoki Kamau
  
 |Behavior | Input| Output|   
 |---------|------|-------|
-|Attach different heroes to the form| User puts in details of Squad| Pre-determined heroes are grabbed and displayed, when checkbox is checked|
+|Attach different heroes to the form| User puts in details of models.Squad| Pre-determined heroes are grabbed and displayed, when checkbox is checked|
 |User is able to create a squad object| use forms| squad object created is stored for reference|
 |The squad created is stored as data and displayed in different page, retrievable| use postgress or SQL| the users creation are availabe even after refresh.|
  

@@ -2,7 +2,7 @@
 
 
     {{#if editSquad}}
-        <h1>Edit this Squad!</h1>
+        <h1>Edit this models.Squad!</h1>
         <form action="/posts/{{editSquad.id}}/update" method="post">
             <label for="content">Edit this Squad's content</label>
             <input id="content" name="content" type="text" value="{{editSquad.squadName}}">
@@ -10,7 +10,7 @@
             <input id="content" name="content" type="text" value="{{editSquad.squadSize}}">
     {{else}}
         <div class="container">
-            <h2 class="text-center"><strong>Create a Squad</strong></h2>
+            <h2 class="text-center"><strong>Create a models.Squad</strong></h2>
 
         <form action="/squads/new" method="post">
             <div class="form-group">

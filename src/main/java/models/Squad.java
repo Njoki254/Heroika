@@ -1,5 +1,6 @@
+package models;
+
 import java.security.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Squad {
@@ -8,7 +9,7 @@ public class Squad {
     private String squadName;
 
     private int squadSize;
-    private String members;
+
     private static ArrayList<Squad> instances = new ArrayList<>();
     private Timestamp squadCreatedAt; //see constructor and my method changed from local date time
 
@@ -16,11 +17,10 @@ public class Squad {
     private int id;
     private boolean posted; //i’m new
 
-    public Squad (String squadName, String squadCause, String members){
+    public Squad (String squadName, String squadCause, int squadSize){
 
         this.squadName = squadName;
         this.squadCause= squadCause;
-        this.members= members;
         this.squadSize= 5;
 
 
@@ -41,9 +41,7 @@ public class Squad {
     public String getSquadName() {
         return squadName;
     }
-    public String getMembers() {
-        return members;
-    }
+
 
 
 
@@ -60,17 +58,12 @@ public class Squad {
     public int getId() {
         return id;
     }
-    public void setId(){this.id=id; }
+    public void setId(int id){this.id=id; }
     public static Squad findSquadById(int id){
         return instances.get(id-1); //because indexing starts at zero
     }
 
-    public void update(String squadCause, String squadName, int squadSize, String members) {
-        this.squadCause = squadCause;
-        this.squadName = squadName;
-        this.squadSize= squadSize;
-        this.members= members;
-    }
+
     public boolean getSquadPosted(){ //new too
         return this.posted;
     }
